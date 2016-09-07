@@ -64,6 +64,8 @@ public class PokeCalc {
 
 		double cp = ((attacco + ivA) * Math.sqrt(difesa + ivD) * Math.sqrt(stamina + ivS) * cpMulti*cpMulti)/10;
 		int cpInt = (int) cp;
+		if (cpInt < 10)
+			cpInt = 10;
 		return cpInt;
 	}
 
@@ -71,15 +73,16 @@ public class PokeCalc {
 		String finale = "Pokemon: \n";
 		String inizio = "#   Nome";
 
-		int longer = Nomi.longer(); // lunghezza nome pkm + 5 (numero e " ")
+		int longer = Nomi.longer(); // lunghezza nome pkm + 4 (numero e " ")
 
-		inizio = inizio + myMon.aggiungiSpazi(longer - 8 + 2); // 8 = "#   Nome".length() e 2 spazi per staccare nome e stats 
-		inizio = inizio + "MAX CP al livello " + level;
-		finale = inizio + myMon.aggiungiSpazi(6) + inizio + myMon.aggiungiSpazi(6) + inizio + "\n";
+		inizio = inizio + myMon.aggiungiSpazi(longer - 8 + 3); // 8 = "#   Nome".length() e 2 spazi per staccare nome e stats 
+		inizio = inizio + "MAX CP al " + level;
+		int space = 0;
+		if (level < 10)
+			space = 1;
+		finale = inizio + myMon.aggiungiSpazi(10 + space) + inizio + myMon.aggiungiSpazi(10 + space) + inizio + "\n";
 
 		for (int i = 0; i < myMon.pokedex.length; i++) {
-			int sum = myMon.pokedex[i][1] + myMon.pokedex[i][2] + myMon.pokedex[i][3];
-
 			int x = 0;
 			if (myMon.pokedex[i][0]>=100)
 				x = 1;
@@ -90,14 +93,16 @@ public class PokeCalc {
 			finale = finale + myMon.pokedex[i][0] + myMon.aggiungiSpazi(x) + Nomi.getNome(myMon.pokedex[i][0]);
 
 			int cp = calcola(i, level, 15, 15, 15);
-			finale = finale + myMon.aggiungiSpazi(2 + (longer - 4 - Nomi.getNome(myMon.pokedex[i][0]).length())) + cp;
+			finale = finale + myMon.aggiungiSpazi(3 + (longer - Nomi.getNome(myMon.pokedex[i][0]).length())) + cp;
 			if (cp < 1000)
+				finale = finale + " ";
+			if (cp < 100)
 				finale = finale + " ";
 
 			if ((i+1)%3 == 0)
 				finale = finale + "\n";
 			else
-				finale = finale + "                      ";
+				finale = finale + myMon.aggiungiSpazi(14);
 		}
 		return finale;
 	}

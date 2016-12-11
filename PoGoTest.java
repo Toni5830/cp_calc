@@ -22,8 +22,21 @@ public class PoGoTest {
 					System.out.println(kanto.getStats());
 
 				else if (value == 2) {
-					Pokedex ordinato = Pokedex.ordina(kanto);
-					System.out.println(ordinato.getStats());
+					Scanner in2 = new Scanner(System.in);
+					boolean done2 = false;
+					while (!done2) {
+						System.out.println("");
+						System.out.println("Inserire numero (B per tornare indietro):");
+						System.out.println("1. ordina per attacco \n" + "2. ordina per difesa \n" + "3. ordina per stamina \n" + "4. ordina per stats totali");
+						String newInput2 = in.next();
+						if (newInput2.equalsIgnoreCase("B"))
+							done2 = true;
+						else {
+							int cheOrdine = Integer.parseInt(newInput2);
+							Pokedex ordinato = Pokedex.ordina(kanto, cheOrdine);
+							System.out.println(ordinato.getStats());
+						}
+					}
 				}
 
 				else if (value == 3) {

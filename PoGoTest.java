@@ -4,7 +4,7 @@ public class PoGoTest {
 	public static void main(String[] args) {
 
 		PokeCalc conti = new PokeCalc();
-		Pokedex kanto = new Pokedex();
+		Pokedex national = new Pokedex();
 
 		Scanner in = new Scanner(System.in);
 		boolean done = false;
@@ -19,7 +19,7 @@ public class PoGoTest {
 				int value = Integer.parseInt(newInput);
 
 				if (value == 1)
-					System.out.println(kanto.getStats());
+					System.out.println(national.getStats());
 
 				else if (value == 2) {
 					Scanner in2 = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class PoGoTest {
 							done2 = true;
 						else {
 							int cheOrdine = Integer.parseInt(newInput2);
-							Pokedex ordinato = Pokedex.ordina(kanto, cheOrdine);
+							Pokedex ordinato = Pokedex.ordina(national, cheOrdine);
 							System.out.println(ordinato.getStats());
 						}
 					}

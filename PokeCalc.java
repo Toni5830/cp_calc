@@ -67,6 +67,8 @@ public class PokeCalc {
 			multiplier = 0.71939909;
 		else if (level == 30)
 			multiplier = 0.7317;
+		else if (level == 40)
+			multiplier = 0.79030001;
 		return multiplier;
 	}
 

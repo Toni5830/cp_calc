@@ -11,7 +11,7 @@ public class PoGoTest {
 		while (!done) {
 			System.out.println("");
 			System.out.println("Inserire numero (Q per terminare sequenza):");
-			System.out.println("1. vedi Pokedex \n" + "2. ordina per stats \n" + "3. vedi cp \n" + "4. calcolo specifico");
+			System.out.println("1. vedi Pokedex \n" + "2. vedi stats \n" + "3. ordina per stats \n" + "4. vedi cp \n" + "5. calcolo specifico");
 			String newInput = in.next();
 			if (newInput.equalsIgnoreCase("Q"))
 				done = true;
@@ -19,9 +19,12 @@ public class PoGoTest {
 				int value = Integer.parseInt(newInput);
 
 				if (value == 1)
+					System.out.println(national.getList());
+
+				else if (value == 2)
 					System.out.println(national.getStats());
 
-				else if (value == 2) {
+				else if (value == 3) {
 					Scanner in2 = new Scanner(System.in);
 					boolean done2 = false;
 					while (!done2) {
@@ -39,13 +42,13 @@ public class PoGoTest {
 					}
 				}
 
-				else if (value == 3) {
+				else if (value == 4) {
 					System.out.println("Per quale livello?");
 					int liv = in.nextInt();
 					System.out.println(conti.maxCP(liv));
 				}
 
-				else if (value == 4) {
+				else if (value == 5) {
 					System.out.println("Numero Pokedex?");
 					int numero = in.nextInt();
 					System.out.println("Livello?");

@@ -51,6 +51,6 @@ public class Nomi {
 		for (int i = 0; i < nomi.length; i++)
 			if (nomi[i].length() > longer)
 				longer = nomi[i].length();
-		return longer + 4;
+		return longer + 5;
 	}
 }

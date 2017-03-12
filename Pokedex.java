@@ -210,15 +210,43 @@ public class Pokedex {
 		return spazi;
 	}
 
+	
+	public String getList() {
+		int longer = Nomi.longer();
+		String lista = "Pokemon: \n";
+		String a = "#    Nome";
+		lista = lista + a + aggiungiSpazi(17) + a + aggiungiSpazi(17) + a + "\n"; //13 se voglio 4 nomi per fila
+
+		for (int i = 0; i < pokedex.length; i++) {
+
+			int x = 0;
+			if (pokedex[i][0]>=100)
+				x = 1;
+			else if (pokedex[i][0]>=10)
+				x = 2;
+			else
+				x = 3;
+			lista = lista + pokedex[i][0] + aggiungiSpazi(x + 1) + Nomi.getNome(pokedex[i][0]);
+
+			if ((i+1)%3 == 0)
+				lista = lista + "\n";
+			else
+				lista = lista + aggiungiSpazi(longer - 5  /* =lunghezza nome più lungo, vedi definizione di longer */ 
+- Nomi.getNome(pokedex[i][0]).length()) + aggiungiSpazi(11); //11 = "#    Nome".length() + 17 - 15
+		}
+
+		return lista;
+	}
+
 	public String getStats() {
 		String finale = "Pokemon: \n";
-		String inizio = "#    Nome ";
+		String inizio = "#    Nome";
 
-		int longer = Nomi.longer(); // lunghezza nome pkm + 5 (numero e " ")
+		int longer = Nomi.longer(); // lunghezza nome pkm + 5 (numero a 3 cifre e "  ")
 
-		inizio = inizio + aggiungiSpazi(longer - 8 + 2); // 8 = "#   Nome".length() e 2 spazi per staccare nome e stats 
+		inizio = inizio + aggiungiSpazi(longer - 9 + 3); // 9 = "#    Nome".length() e 3 spazi per staccare nome e stats 
 		inizio = inizio + "Att  Def  Stm   TOT";
-		finale = inizio + aggiungiSpazi(8) + inizio + aggiungiSpazi(8) + inizio + "\n";
+		finale = finale + inizio + aggiungiSpazi(8) + inizio + aggiungiSpazi(8) + inizio + "\n";
 
 		for (int i = 0; i < pokedex.length; i++) {
 			int sum = pokedex[i][1] + pokedex[i][2] + pokedex[i][3];
@@ -230,25 +258,25 @@ public class Pokedex {
 				x = 2;
 			else
 				x = 3;
-			finale = finale + pokedex[i][0] + aggiungiSpazi(x + 1) + Nomi.getNome(pokedex[i][0]) + " ";
+			finale = finale + pokedex[i][0] + aggiungiSpazi(x + 1) + Nomi.getNome(pokedex[i][0]);
 
-			String s = "  ";
-			String u = "   ";
-			String t = "  ";
-			if (pokedex[i][1] < 100)
-				s = "   ";
-			if (pokedex[i][2] < 100)
-				t = "   ";
-			if (pokedex[i][3] < 100)
-				u = "    ";
+			String s = aggiungiSpazi(2);
+			String u = aggiungiSpazi(3);
+			String t = aggiungiSpazi(2);
 
-			finale = finale + aggiungiSpazi(2 + (longer - 4 - Nomi.getNome(pokedex[i][0]).length()))
-				+ pokedex[i][1] + s + pokedex[i][2] + t + pokedex[i][3] + u + sum;
+			if (pokedex[i][1] < 100)	s = aggiungiSpazi(3);
+
+			if (pokedex[i][2] < 100)	t = aggiungiSpazi(3);
+
+			if (pokedex[i][3] < 100)	u = aggiungiSpazi(4);
+
+			finale = finale + aggiungiSpazi(3 + (longer - 5  /* =lunghezza nome più lungo, vedi definizione di longer */ 
+- Nomi.getNome(pokedex[i][0]).length())) + pokedex[i][1] + s + pokedex[i][2] + t + pokedex[i][3] + u + sum;
 
 			if ((i+1)%3 == 0)
 				finale = finale + "\n";
 			else
-				finale = finale + "        ";
+				finale = finale + aggiungiSpazi(8);
 		}
 		return finale;
 	}

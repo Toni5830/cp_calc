@@ -67,6 +67,24 @@ public class PokeCalc {
 			multiplier = 0.71939909;
 		else if (level == 30)
 			multiplier = 0.7317;
+		else if (level == 31)
+			multiplier = 0.73776948;
+		else if (level == 32)
+			multiplier = 0.74378943;
+		else if (level == 33)
+			multiplier = 0.74976104;
+		else if (level == 34)
+			multiplier = 0.75568551;
+		else if (level == 35)
+			multiplier = 0.76156384;
+		else if (level == 36)
+			multiplier = 0.76739717;
+		else if (level == 37)
+			multiplier = 0.7731865;
+		else if (level == 38)
+			multiplier = 0.77893275;
+		else if (level == 39)
+			multiplier = 0.78463697;
 		else if (level == 40)
 			multiplier = 0.79030001;
 		return multiplier;

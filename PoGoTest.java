@@ -60,7 +60,7 @@ public class PoGoTest {
 					System.out.println("IV stamina?");
 					int ivS = in.nextInt();
 
-					System.out.println("Il cp del tuo pokemon sarà: " + conti.calcola(numero-1, livello, ivA, ivD, ivS));
+					System.out.println("Il cp del tuo " + Nomi.getNome(numero-1) + " sarà: " + conti.calcola(numero-1, livello, ivA, ivD, ivS));
 				}
 
 				else

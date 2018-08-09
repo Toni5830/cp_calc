@@ -1,0 +1,68 @@
+Istruzioni:
+(per eventuale aggiornamenti a quinta gen)
+
+copiare stat e tutto da pokemongo.gamepress in un file text.txt
+ottieni qualcosa tipo:
+
+#1 Bulbasaur	
+90	118	118
+HP	Atk	Def
+	981	0
+Ivysaur #2 Ivysaur	
+120	151	151
+HP	Atk	Def
+	1552	0
+Venusaur #3 Venusaur	
+160	198	198
+HP	Atk	Def
+	2568	3.5
+Charmander #4 Charmander	
+78	116	96
+HP	Atk	Def
+	831	0
+Charmeleon #5 Charmeleon	
+116	158	129
+HP	Atk	Def
+	1484	0
+Charizard #6 Charizard	
+156	223	176
+HP	Atk	Def
+	2686	3.5 
+
+> sed '/^[^0-9]/d' text.txt
+// elimina le righe che non iniziano con un numero
+ottengo:
+90	118	118
+120	151	151
+160	198	198
+78	116	96
+116	158	129
+156	223	176
+
+copio e sostituisco in text.txt
+
+
+> sed 's/^/{/' text.txt
+
+{90	118	118
+{120	151	151
+{160	198	198
+{78	116	96
+{116	158	129
+{156	223	176
+
+
+Poi da textwrangler sistemo tab(\t) parentesi{} e virgole
+
+
+copio e incollo in reverse.java perché pokemongo.gamepress ha 
+HP		Atk		Def
+e io voglio 
+Atk		Def		HP
+
+poi in TextWrangler cerco
+\s+(?=\d\d,)	e	\s+(?=\d\d,)
+e sostituisco con uno spazio " "
+(questo per allineare le stats nel file java per leggibilità)
+
+copio in pokedex.java e ho finito

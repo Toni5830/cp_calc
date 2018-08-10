@@ -105,38 +105,35 @@ public class PokeCalc {
 
 	public String maxCP(int level) {
 		String finale = "Pokemon: \n";
-		String inizio = "#   Nome";
+		String inizio = "#    Nome";
 
-		int longer = Nomi.longer(); // lunghezza nome pkm + 4 (numero e " ")
+		int longest = Nomi.longestName(); // lunghezza nome pkm + 3 cifre (numero e "  ")
 
-		inizio = inizio + myMon.aggiungiSpazi(longer - 8 + 3); // 8 = "#   Nome".length() e 2 spazi per staccare nome e stats 
-		inizio = inizio + "MAX CP al " + level;
-		int space = 0;
-		if (level < 10)
-			space = 1;
-		finale = inizio + myMon.aggiungiSpazi(10 + space) + inizio + myMon.aggiungiSpazi(10 + space) + inizio + "\n";
+		inizio = inizio + myMon.aggiungiSpazi(longest - 9 + 3); // 9 = "#    Nome".length() e 2 spazi per staccare nome e stats 
+		inizio = inizio + "CP";
+		finale = inizio + myMon.aggiungiSpazi(10) + inizio + myMon.aggiungiSpazi(10) + inizio + myMon.aggiungiSpazi(10) + inizio + "\n";
 
 		for (int i = 0; i < myMon.pokedex.length; i++) {
 			int x = 0;
 			if (myMon.pokedex[i][0]>=100)
-				x = 1;
-			else if (myMon.pokedex[i][0]>=10)
 				x = 2;
-			else
+			else if (myMon.pokedex[i][0]>=10)
 				x = 3;
+			else
+				x = 4;
 			finale = finale + myMon.pokedex[i][0] + myMon.aggiungiSpazi(x) + Nomi.getNome(myMon.pokedex[i][0]);
 
 			int cp = calcola(i, level, 15, 15, 15);
-			finale = finale + myMon.aggiungiSpazi(3 + (longer - Nomi.getNome(myMon.pokedex[i][0]).length())) + cp;
+			finale = finale + myMon.aggiungiSpazi(-2 + (longest - Nomi.getNome(myMon.pokedex[i][0]).length())) + cp;
 			if (cp < 1000)
 				finale = finale + " ";
 			if (cp < 100)
 				finale = finale + " ";
 
-			if ((i+1)%3 == 0)
+			if ((i+1)%4 == 0)
 				finale = finale + "\n";
 			else
-				finale = finale + myMon.aggiungiSpazi(14);
+				finale = finale + myMon.aggiungiSpazi(8);
 		}
 		return finale;
 	}

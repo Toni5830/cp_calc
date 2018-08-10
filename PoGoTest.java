@@ -18,8 +18,34 @@ public class PoGoTest {
 			else {
 				int value = Integer.parseInt(newInput);
 
-				if (value == 1)
-					System.out.println(national.getList());
+				if (value == 1) {
+					Scanner in3 = new Scanner(System.in);
+					boolean done3 = false;
+					while (!done3) {
+						System.out.println("");
+						System.out.println("Inserire numero (B per tornare indietro):");
+						System.out.println("1. Gen 1 \n" + "2. Gen 2 \n" + "3. Gen 3 \n" + "4. Gen 4 \n" + "0. Tutte le generazioni.");
+						String newInput3 = in.next();
+						if (newInput3.equalsIgnoreCase("B"))
+							done3 = true;
+						else {
+							int cheGen = Integer.parseInt(newInput3);
+							int min = 1;
+							int max = 493;
+
+							if(cheGen == 1) {max = 151;}
+							else if(cheGen == 2) {
+								min = 152;
+								max = 251;	}
+							else if(cheGen == 3) {
+								min = 252;
+								max = 386;	}
+							else if(cheGen == 4) {
+								min = 387;	}
+							System.out.println(national.getList(min, max));
+						}
+					}
+				}
 
 				else if (value == 2)
 					System.out.println(national.getStats());

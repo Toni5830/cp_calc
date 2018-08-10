@@ -80,17 +80,17 @@ public class Nomi {
 		};
 	}
 
-	public static String getNome(int nPoked) {
+	public static String getNome(int numPokedex) {
 		String name = "";
-		name = nomi[nPoked - 1];
+		name = nomi[numPokedex - 1];
 		return name;
 	}
 
-	public static int longer() {
-		int longer = 0;
+	public static int longestName() {
+		int longest = 0;
 		for (int i = 0; i < nomi.length; i++)
-			if (nomi[i].length() > longer)
-				longer = nomi[i].length();
-		return longer + 5;
+			if (nomi[i].length() > longest)
+				longest = nomi[i].length();
+		return longest + 5;
 	}
 }
